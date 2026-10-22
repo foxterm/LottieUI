@@ -23,17 +23,16 @@
 //  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 public struct LottieView: View, LUStateProtocol {
-    
     /// The Lottie status information.
     var state: LUStateData = .init()
     /// The current animation time with a progress value. The default value is 0.
     var value: CGFloat = 0
     private var cancellables = Set<AnyCancellable>()
-    
+
     /// Initialize `LottieView`
     ///
     /// - Parameters:
@@ -44,10 +43,11 @@ public struct LottieView: View, LUStateProtocol {
     ///
     public init(state: LUStateData, value: CGFloat = 0,
                 onCompleted: @escaping (Bool) -> Void = { _ in },
-                onDownloaded: @escaping (Bool) -> Void = { _ in }) {
+                onDownloaded: @escaping (Bool) -> Void = { _ in })
+    {
         self.state = state
         self.value = value
-        
+
         self.state.onCompleted
             .sink(receiveValue: onCompleted)
             .store(in: &cancellables)
@@ -55,7 +55,7 @@ public struct LottieView: View, LUStateProtocol {
             .sink(receiveValue: onDownloaded)
             .store(in: &cancellables)
     }
-    
+
     public var body: some View {
         GeometryReader { proxy in
             ZStack {

@@ -23,13 +23,12 @@
 //  OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import SwiftUI
 import Combine
 import Lottie
+import SwiftUI
 
 /// The Lottie status information.
-final public class LUStateData: Equatable {
-    
+public final class LUStateData: Equatable {
     /// The type to load animation models.
     let type: LULoadType
     /// Sets the speed of the animation playback. Defaults to 1
@@ -40,23 +39,22 @@ final public class LUStateData: Equatable {
     let range: LUProgressRange
     /// Setting value will stop the current animation. The default value is `false`
     var isControlEnabled: Bool = false
-    
+
     /// An optional completion closure to be called when the animation completes playing.
     let onCompleted = PassthroughSubject<Bool, Never>()
     /// An optional completion closure to be called when the animation model has completes loading.
     let onDownloaded = PassthroughSubject<Bool, Never>()
     /// Sets the layout of the content
     let contentMode: ContentMode
-    
+
     public init() {
-        self.type = .name("", .main)
-        self.speed = 1.0
-        self.loopMode = .loop
-        self.range = LUProgressRange()
-        self.contentMode = .fit
+        type = .name("", .main)
+        speed = 1.0
+        loopMode = .loop
+        range = LUProgressRange()
+        contentMode = .fit
     }
-    
-    
+
     /// Initialize `LUStateData`
     ///
     /// - Parameters:
@@ -72,7 +70,8 @@ final public class LUStateData: Equatable {
                 loopMode: LottieLoopMode = .loop,
                 range: LUProgressRange? = nil,
                 isControlEnabled: Bool = false,
-                contentMode: ContentMode = .fit) {
+                contentMode: ContentMode = .fit)
+    {
         self.type = type
         self.speed = speed
         self.loopMode = loopMode
@@ -80,13 +79,13 @@ final public class LUStateData: Equatable {
         self.isControlEnabled = isControlEnabled
         self.contentMode = contentMode
     }
-    
+
     public static func == (lhs: LUStateData, rhs: LUStateData) -> Bool {
         return lhs.type == rhs.type &&
-        lhs.speed == rhs.speed &&
-        lhs.loopMode == rhs.loopMode &&
-        lhs.range == rhs.range &&
-        lhs.isControlEnabled == rhs.isControlEnabled &&
-        lhs.contentMode == rhs.contentMode
+            lhs.speed == rhs.speed &&
+            lhs.loopMode == rhs.loopMode &&
+            lhs.range == rhs.range &&
+            lhs.isControlEnabled == rhs.isControlEnabled &&
+            lhs.contentMode == rhs.contentMode
     }
 }
