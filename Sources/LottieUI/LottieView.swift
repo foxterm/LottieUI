@@ -37,7 +37,7 @@ public struct LottieView: View, LUStateProtocol {
     ///
     /// - Parameters:
     ///   - state: The Lottie status information.
-    ///   - value: The current animation time with a progress value. Note: Setting this will stop the current animation.
+    ///   - value: The current animation time with a progress value. Requires `isControlEnabled = true` in state.
     ///   - onCompleted: An optional completion closure to be called when the animation completes playing.
     ///   - onDownloaded: An optional completion closure to be called when the animation model has completes loading.
     ///

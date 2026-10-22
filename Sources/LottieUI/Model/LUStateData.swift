@@ -37,7 +37,7 @@ public final class LUStateData: Equatable {
     let loopMode: LottieLoopMode
     /// Plays the animation from a progress (0-1) to a progress (0-1).
     let range: LUProgressRange
-    /// Setting value will stop the current animation. The default value is `false`
+    /// Setting to true enables manual progress control via the `value` parameter. The default value is `false`.
     var isControlEnabled: Bool = false
 
     /// An optional completion closure to be called when the animation completes playing.
@@ -62,8 +62,8 @@ public final class LUStateData: Equatable {
     ///   - speed: Sets the speed of the animation playback. Defaults to 1
     ///   - loopMode: Defines animation loop behavior `LottieLoopMode`
     ///   - range: Plays the animation from a progress (0-1) to a progress (0-1).
-    ///   - isControlEnabled: Setting value will stop the current animation. The default value is `false`
-    ///   - contentView: Sets the layout of the content. Defaults to `.scaleAspectFit`
+    ///   - isControlEnabled: Setting to true enables manual progress control via the `value` parameter. The default value is `false`
+    ///   - contentMode: Sets the layout of the content. Defaults to `.fit`
     ///
     public init(type: LULoadType,
                 speed: Double = 1.0,

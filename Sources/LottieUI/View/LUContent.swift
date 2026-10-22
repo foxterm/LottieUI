@@ -28,7 +28,7 @@ import Lottie
 import SwiftUI
 
 #if os(iOS)
-    /// Tthe content view used by iOS.
+    /// The content view used by iOS.
     struct LUContent: UIViewRepresentable, LUStateProtocol {
         /// The Lottie status information.
         var state: LUStateData
@@ -60,11 +60,7 @@ import SwiftUI
         /// Updates the state of the specified view with new information from SwiftUI.
         func updateUIView(_ uiView: UIView, context _: Context) {
             guard let view = uiView as? LUView else { return }
-
-            // Setting value will stop the current animation.
-            if value > 0 {
-                state.isControlEnabled = true
-            }
+            view.update(state: state)
             if state.isControlEnabled {
                 view.currentProgress = value
             }
@@ -103,11 +99,7 @@ import SwiftUI
         /// Updates the state of the specified view with new information from SwiftUI.
         func updateNSView(_ nsView: NSView, context _: Context) {
             guard let view = nsView as? LUView else { return }
-
-            // Setting value will stop the current animation.
-            if value > 0 {
-                state.isControlEnabled = true
-            }
+            view.update(state: state)
             if state.isControlEnabled {
                 view.currentProgress = value
             }
